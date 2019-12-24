@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        transform.right = player.position - transform.position;
+        transform.up = player.position - transform.position;
     }
 
     public void Hit()

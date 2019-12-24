@@ -138,7 +138,18 @@ public class PlayerController : MonoBehaviour
         foreach (DarkZone zone in zones)
         {
             zone.gameObject.SetActive(true);
+           //zone.ResetTargets();
         }
+
         zones[direction].gameObject.SetActive(false);
+        zones[direction].enemies.Clear();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Enemy>())
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

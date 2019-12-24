@@ -8,6 +8,9 @@ public class EnemySpawner : MonoBehaviour
     private float timer;
 
     [SerializeField]
+    private float timeToReduce;
+
+    [SerializeField]
     private GameObject enemy;
 
     [SerializeField]
@@ -24,8 +27,8 @@ public class EnemySpawner : MonoBehaviour
         width = Camera.main.orthographicSize;
         height = Camera.main.orthographicSize * Camera.main.aspect;
         StartCoroutine(SpawnEnemy());
+       // InvokeRepeating("ReduceTime", timer, 1);
     }
-   
 
     private IEnumerator SpawnEnemy()
     {
@@ -58,7 +61,18 @@ public class EnemySpawner : MonoBehaviour
         
         yield return new WaitForSeconds(timer);
 
+        ReduceTime();
+
         StartCoroutine(SpawnEnemy());
 
+    }
+
+    private void ReduceTime()
+    {
+        if (timer > 0.4)
+        {
+            timer -= timeToReduce;
+        }
+        
     }
 }

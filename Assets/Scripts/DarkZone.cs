@@ -35,4 +35,11 @@ public class DarkZone : MonoBehaviour
             }            
         }
     }
+
+    public void ResetTargets()
+    {
+        warning.SetActive(false);
+        enemies.Clear();        
+        
+    }
 }
